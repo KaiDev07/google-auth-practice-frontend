@@ -11,11 +11,11 @@ export const useCheckAuth = () => {
             const response = await fetch(
                 `${process.env.REACT_APP_USER_API_URL}/refresh`,
                 {
-                    method: 'GET',
-                    credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json',
                     },
+                    method: 'GET',
+                    credentials: 'include',
                 }
             )
             const json = await response.json()
