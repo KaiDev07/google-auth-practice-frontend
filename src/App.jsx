@@ -13,7 +13,7 @@ async function auth() {
         `${process.env.REACT_APP_USER_API_URL}/request`,
         {
             headers: {
-                'Content-Type': 'application/json',
+                Accept: 'application/json',
             },
             method: 'POST',
             credentials: 'include',

@@ -12,7 +12,7 @@ export const useCheckAuth = () => {
                 `${process.env.REACT_APP_USER_API_URL}/refresh`,
                 {
                     headers: {
-                        'Content-Type': 'application/json',
+                        Accept: 'application/json',
                     },
                     method: 'GET',
                     credentials: 'include',
