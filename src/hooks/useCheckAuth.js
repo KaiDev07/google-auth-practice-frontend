@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useAuthContext } from './useAuthContext'
+import axios from 'axios'
 
 export const useCheckAuth = () => {
     const [isLoading4, setIsLoading4] = useState(false)
@@ -8,26 +9,25 @@ export const useCheckAuth = () => {
     const checkAuth = async () => {
         try {
             setIsLoading4(true)
-            const response = await fetch(
+            const response = await axios(
                 `${process.env.REACT_APP_USER_API_URL}/refresh`,
                 {
-                    method: 'GET',
-                    credentials: 'include',
+                    withCredentials: true,
                     headers: {
                         'Content-Type': 'application/json',
                     },
                 }
             )
-            const json = await response.json()
             setIsLoading4(false)
-            localStorage.setItem('token', json.accessToken)
-            dispatch({
-                type: 'LOGIN',
-                payload: json.user,
-            })
+            console.log(response.data.user)
+            // localStorage.setItem('token', response.data.accessToken)
+            // dispatch({
+            //     type: 'LOGIN',
+            //     payload: response.data.user,
+            // })
         } catch (error) {
             setIsLoading4(false)
-            console.log(error.error)
+            console.log(error.response.data.error)
         }
     }
 

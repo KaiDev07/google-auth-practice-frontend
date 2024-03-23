@@ -4,23 +4,12 @@ import './App.css'
 import { useCheckAuth } from './hooks/useCheckAuth'
 import { useAuthContext } from './hooks/useAuthContext'
 
-function navigate(url) {
-    window.location.href = url
-}
-
 async function auth() {
-    const response = await fetch(
-        `${process.env.REACT_APP_USER_API_URL}/request`,
-        {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            method: 'POST',
-            credentials: 'include',
-        }
-    )
-    const data = await response.json()
-    navigate(data.url)
+    try {
+        window.location.href = `${process.env.REACT_APP_USER_API_URL}/auth/google/callback`
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 function App() {
@@ -32,10 +21,10 @@ function App() {
 
     return (
         <div className="App">
-            <button onClick={() => auth()} disabled={isLoading4}>
+            <button onClick={auth} disabled={isLoading4}>
                 <img src={googleButton} alt="google sign in" />
             </button>
-            {user && <h1>Welcome {!!user.name ? user.name : user.email}!</h1>}
+            {/* {user && <h1>Welcome {!!user.name ? user.name : user.email}!</h1>} */}
         </div>
     )
 }
