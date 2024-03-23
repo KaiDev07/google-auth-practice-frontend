@@ -4,7 +4,7 @@ import './App.css'
 import { useCheckAuth } from './hooks/useCheckAuth'
 import { useAuthContext } from './hooks/useAuthContext'
 
-async function auth() {
+function auth() {
     try {
         window.location.href = `${process.env.REACT_APP_USER_API_URL}/auth/google/callback`
     } catch (error) {
