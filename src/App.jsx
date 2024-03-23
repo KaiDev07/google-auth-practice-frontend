@@ -6,7 +6,7 @@ import { useAuthContext } from './hooks/useAuthContext'
 
 async function auth() {
     try {
-        window.location.href = `${process.env.REACT_APP_USER_API_URL}/auth/google/callback`
+        window.location.href = `${process.env.REACT_APP_USER_API_URL}/auth/google`
     } catch (error) {
         console.log(error)
     }
