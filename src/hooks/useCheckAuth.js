@@ -20,11 +20,11 @@ export const useCheckAuth = () => {
             )
             setIsLoading4(false)
             console.log(response.data.user)
-            // localStorage.setItem('token', response.data.accessToken)
-            // dispatch({
-            //     type: 'LOGIN',
-            //     payload: response.data.user,
-            // })
+            localStorage.setItem('token', response.data.accessToken)
+            dispatch({
+                type: 'LOGIN',
+                payload: response.data.user,
+            })
         } catch (error) {
             setIsLoading4(false)
             console.log(error.response.data.error)
